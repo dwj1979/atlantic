@@ -1,5 +1,6 @@
 package com.zhu.controller;
 
+import java.util.Date;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -34,17 +35,20 @@ public class UserController {
 			String uid = GeneralKeyTool.getId().substring(0,5)+((String)param.get("uname")).hashCode();
 			User user = new User();
 			user.setComment(param.get("comment"));
-			user.setId(GeneralKeyTool.getId());
+			user.setId(GeneralKeyTool.getId().substring(0,19));
 			user.setUserName(param.get("uname"));
 			user.setUserPsd(param.get("pswd"));
 			user.setUserId(uid);
+			user.setCtime(new Date());
 			userMapper.insertSelective(user);
 			UserInfo userInfo = new UserInfo();
-			userInfo.setAddr(Integer.parseInt(param.get("addr")));
-			userInfo.setGender(Byte.parseByte(param.get("gender")));
-			userInfo.setPhone(Integer.parseInt(param.get("phone")));
-			userInfo.setUid(uid);
+			userInfo.setAddr(param.get("addr"));
+			userInfo.setGender(Integer.parseInt(param.get("gender")));
+			userInfo.setPhone(Long.parseLong(param.get("phone")+""));
+			userInfo.setUserId(uid);
+			userInfo.setCtime(new Date());
 			userInfoMapper.insertSelective(userInfo );
+			System.out.println("******************************");
 			return "success";
 		} catch (Exception e) {
 			e.printStackTrace();

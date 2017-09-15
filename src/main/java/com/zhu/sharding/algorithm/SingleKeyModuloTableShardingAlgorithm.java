@@ -25,42 +25,47 @@ import java.util.Collection;
 import java.util.LinkedHashSet;
 
 public final class SingleKeyModuloTableShardingAlgorithm implements SingleKeyTableShardingAlgorithm<Long> {
-    
-    @Override
-    public String doEqualSharding(final Collection<String> availableTargetNames, final ShardingValue<Long> shardingValue) {
-        for (String each : availableTargetNames) {
-            if (each.endsWith((shardingValue.getValue()+"").hashCode() % 2 + 1 + "")) {
-                return each;
-            }
-        }
-        throw new UnsupportedOperationException();
-    }
-    
-    @Override
-    public Collection<String> doInSharding(final Collection<String> availableTargetNames, final ShardingValue<Long> shardingValue) {
-        Collection<String> result = new LinkedHashSet<>(availableTargetNames.size());
-        Collection<Long> values = shardingValue.getValues();
-        for (Long value : values) {
-            for (String each : availableTargetNames) {
-                if (each.endsWith(value % 2 + "")) {
-                    result.add(each);
-                }
-            }
-        }
-        return result;
-    }
-    
-    @Override
-    public Collection<String> doBetweenSharding(final Collection<String> availableTargetNames, final ShardingValue<Long> shardingValue) {
-        Collection<String> result = new LinkedHashSet<>(availableTargetNames.size());
-        Range<Long> range = shardingValue.getValueRange();
-        for (Long i = range.lowerEndpoint(); i <= range.upperEndpoint(); i++) {
-            for (String each : availableTargetNames) {
-                if (each.endsWith(i % 2 + "")) {
-                    result.add(each);
-                }
-            }
-        }
-        return result;
-    }
+
+	@Override
+	public String doEqualSharding(final Collection<String> availableTargetNames,
+			final ShardingValue<Long> shardingValue) {
+		int hashCode = (shardingValue.getValue() + "").hashCode();
+		if(hashCode<0) hashCode=hashCode*(-1);
+		for (String each : availableTargetNames) {
+			if (each.endsWith(hashCode % 3 + 1 + "")) {
+				return each;
+			}
+		}
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public Collection<String> doInSharding(final Collection<String> availableTargetNames,
+			final ShardingValue<Long> shardingValue) {
+		Collection<String> result = new LinkedHashSet<>(availableTargetNames.size());
+		Collection<Long> values = shardingValue.getValues();
+		for (Long value : values) {
+			for (String each : availableTargetNames) {
+				if (each.endsWith(value % 3 + 1 + "")) {
+					result.add(each);
+				}
+			}
+		}
+		return result;
+	}
+
+	@Override
+	public Collection<String> doBetweenSharding(final Collection<String> availableTargetNames,
+			final ShardingValue<Long> shardingValue) {
+		Collection<String> result = new LinkedHashSet<>(availableTargetNames.size());
+		Range<Long> range = shardingValue.getValueRange();
+		for (Long i = range.lowerEndpoint(); i <= range.upperEndpoint(); i++) {
+			for (String each : availableTargetNames) {
+				if (each.endsWith(i % 3 + 1 + "")) {
+					result.add(each);
+				}
+			}
+		}
+		return result;
+	}
 }

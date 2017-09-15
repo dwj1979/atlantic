@@ -94,8 +94,8 @@ public class ShardDataSourceConfig {
 		ShardingRule shardingRule = ShardingRule.builder().dataSourceRule(dataSourceRule())
 				.tableRules(Arrays.asList(userTableRule(),userInfoTableRule()))
 				.databaseShardingStrategy(
-						new DatabaseShardingStrategy("user_id", new SingleKeyModuloDatabaseShardingAlgorithm()))
-				.tableShardingStrategy(new TableShardingStrategy("ctime", new SingleKeyModuloTableShardingAlgorithm()))
+						new DatabaseShardingStrategy("ctime", new SingleKeyModuloDatabaseShardingAlgorithm()))
+				.tableShardingStrategy(new TableShardingStrategy("user_id", new SingleKeyModuloTableShardingAlgorithm()))
 				.build();
 		return shardingRule;
 	}

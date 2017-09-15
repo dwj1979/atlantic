@@ -3,10 +3,10 @@
 <mapper namespace="com.zhu.dao.UserInfoMapper" >
   <resultMap id="BaseResultMap" type="com.zhu.po.UserInfo" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="uid" property="uid" jdbcType="VARCHAR" />
-    <result column="phone" property="phone" jdbcType="INTEGER" />
-    <result column="addr" property="addr" jdbcType="INTEGER" />
-    <result column="gender" property="gender" jdbcType="TINYINT" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="BIGINT" />
+    <result column="addr" property="addr" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="INTEGER" />
     <result column="ctime" property="ctime" jdbcType="TIMESTAMP" />
     <result column="utime" property="utime" jdbcType="TIMESTAMP" />
   </resultMap>
@@ -69,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, uid, phone, addr, gender, ctime, utime
+    id, user_id, phone, addr, gender, ctime, utime
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zhu.po.UserInfoExample" >
     select
@@ -102,11 +102,11 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.zhu.po.UserInfo" >
-    insert into user_info (id, uid, phone, 
+    insert into user_info (id, user_id, phone, 
       addr, gender, ctime, 
       utime)
-    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=VARCHAR}, #{phone,jdbcType=INTEGER}, 
-      #{addr,jdbcType=INTEGER}, #{gender,jdbcType=TINYINT}, #{ctime,jdbcType=TIMESTAMP}, 
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{phone,jdbcType=BIGINT}, 
+      #{addr,jdbcType=VARCHAR}, #{gender,jdbcType=INTEGER}, #{ctime,jdbcType=TIMESTAMP}, 
       #{utime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.zhu.po.UserInfo" >
@@ -115,8 +115,8 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="uid != null" >
-        uid,
+      <if test="userId != null" >
+        user_id,
       </if>
       <if test="phone != null" >
         phone,
@@ -138,17 +138,17 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="uid != null" >
-        #{uid,jdbcType=VARCHAR},
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
       </if>
       <if test="phone != null" >
-        #{phone,jdbcType=INTEGER},
+        #{phone,jdbcType=BIGINT},
       </if>
       <if test="addr != null" >
-        #{addr,jdbcType=INTEGER},
+        #{addr,jdbcType=VARCHAR},
       </if>
       <if test="gender != null" >
-        #{gender,jdbcType=TINYINT},
+        #{gender,jdbcType=INTEGER},
       </if>
       <if test="ctime != null" >
         #{ctime,jdbcType=TIMESTAMP},
@@ -170,17 +170,17 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.uid != null" >
-        uid = #{record.uid,jdbcType=VARCHAR},
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=VARCHAR},
       </if>
       <if test="record.phone != null" >
-        phone = #{record.phone,jdbcType=INTEGER},
+        phone = #{record.phone,jdbcType=BIGINT},
       </if>
       <if test="record.addr != null" >
-        addr = #{record.addr,jdbcType=INTEGER},
+        addr = #{record.addr,jdbcType=VARCHAR},
       </if>
       <if test="record.gender != null" >
-        gender = #{record.gender,jdbcType=TINYINT},
+        gender = #{record.gender,jdbcType=INTEGER},
       </if>
       <if test="record.ctime != null" >
         ctime = #{record.ctime,jdbcType=TIMESTAMP},
@@ -196,10 +196,10 @@
   <update id="updateByExample" parameterType="map" >
     update user_info
     set id = #{record.id,jdbcType=INTEGER},
-      uid = #{record.uid,jdbcType=VARCHAR},
-      phone = #{record.phone,jdbcType=INTEGER},
-      addr = #{record.addr,jdbcType=INTEGER},
-      gender = #{record.gender,jdbcType=TINYINT},
+      user_id = #{record.userId,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=BIGINT},
+      addr = #{record.addr,jdbcType=VARCHAR},
+      gender = #{record.gender,jdbcType=INTEGER},
       ctime = #{record.ctime,jdbcType=TIMESTAMP},
       utime = #{record.utime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
@@ -209,17 +209,17 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.zhu.po.UserInfo" >
     update user_info
     <set >
-      <if test="uid != null" >
-        uid = #{uid,jdbcType=VARCHAR},
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
       </if>
       <if test="phone != null" >
-        phone = #{phone,jdbcType=INTEGER},
+        phone = #{phone,jdbcType=BIGINT},
       </if>
       <if test="addr != null" >
-        addr = #{addr,jdbcType=INTEGER},
+        addr = #{addr,jdbcType=VARCHAR},
       </if>
       <if test="gender != null" >
-        gender = #{gender,jdbcType=TINYINT},
+        gender = #{gender,jdbcType=INTEGER},
       </if>
       <if test="ctime != null" >
         ctime = #{ctime,jdbcType=TIMESTAMP},
@@ -232,10 +232,10 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.zhu.po.UserInfo" >
     update user_info
-    set uid = #{uid,jdbcType=VARCHAR},
-      phone = #{phone,jdbcType=INTEGER},
-      addr = #{addr,jdbcType=INTEGER},
-      gender = #{gender,jdbcType=TINYINT},
+    set user_id = #{userId,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=BIGINT},
+      addr = #{addr,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=INTEGER},
       ctime = #{ctime,jdbcType=TIMESTAMP},
       utime = #{utime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}

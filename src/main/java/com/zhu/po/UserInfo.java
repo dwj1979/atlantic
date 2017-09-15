@@ -6,13 +6,13 @@ import java.util.Date;
 public class UserInfo implements Serializable {
     private Integer id;
 
-    private String uid;
+    private String userId;
 
-    private Integer phone;
+    private Long phone;
 
-    private Integer addr;
+    private String addr;
 
-    private Byte gender;
+    private Integer gender;
 
     private Date ctime;
 
@@ -28,35 +28,35 @@ public class UserInfo implements Serializable {
         this.id = id;
     }
 
-    public String getUid() {
-        return uid;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUid(String uid) {
-        this.uid = uid == null ? null : uid.trim();
+    public void setUserId(String userId) {
+        this.userId = userId == null ? null : userId.trim();
     }
 
-    public Integer getPhone() {
+    public Long getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(Long phone) {
         this.phone = phone;
     }
 
-    public Integer getAddr() {
+    public String getAddr() {
         return addr;
     }
 
-    public void setAddr(Integer addr) {
-        this.addr = addr;
+    public void setAddr(String addr) {
+        this.addr = addr == null ? null : addr.trim();
     }
 
-    public Byte getGender() {
+    public Integer getGender() {
         return gender;
     }
 
-    public void setGender(Byte gender) {
+    public void setGender(Integer gender) {
         this.gender = gender;
     }
 
@@ -89,7 +89,7 @@ public class UserInfo implements Serializable {
         }
         UserInfo other = (UserInfo) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getUid() == null ? other.getUid() == null : this.getUid().equals(other.getUid()))
+            && (this.getUserId() == null ? other.getUserId() == null : this.getUserId().equals(other.getUserId()))
             && (this.getPhone() == null ? other.getPhone() == null : this.getPhone().equals(other.getPhone()))
             && (this.getAddr() == null ? other.getAddr() == null : this.getAddr().equals(other.getAddr()))
             && (this.getGender() == null ? other.getGender() == null : this.getGender().equals(other.getGender()))
@@ -102,7 +102,7 @@ public class UserInfo implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getUid() == null) ? 0 : getUid().hashCode());
+        result = prime * result + ((getUserId() == null) ? 0 : getUserId().hashCode());
         result = prime * result + ((getPhone() == null) ? 0 : getPhone().hashCode());
         result = prime * result + ((getAddr() == null) ? 0 : getAddr().hashCode());
         result = prime * result + ((getGender() == null) ? 0 : getGender().hashCode());
@@ -118,7 +118,7 @@ public class UserInfo implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", uid=").append(uid);
+        sb.append(", userId=").append(userId);
         sb.append(", phone=").append(phone);
         sb.append(", addr=").append(addr);
         sb.append(", gender=").append(gender);

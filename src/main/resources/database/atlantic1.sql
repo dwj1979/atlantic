@@ -11,7 +11,7 @@
  Target Server Version : 50719
  File Encoding         : utf-8
 
- Date: 09/13/2017 10:49:30 AM
+ Date: 09/15/2017 14:26:32 PM
 */
 
 SET NAMES utf8mb4;
@@ -83,10 +83,10 @@ CREATE TABLE `user_3` (
 DROP TABLE IF EXISTS `user_info`;
 CREATE TABLE `user_info` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `uid` varchar(255) NOT NULL,
-  `phone` int(11) DEFAULT NULL,
-  `addr` int(11) DEFAULT NULL,
-  `gender` tinyint(4) NOT NULL DEFAULT '0',
+  `user_id` varchar(255) NOT NULL,
+  `phone` bigint(11) DEFAULT NULL,
+  `addr` varchar(255) DEFAULT NULL,
+  `gender` int(4) NOT NULL DEFAULT '0',
   `ctime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `utime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
@@ -98,14 +98,14 @@ CREATE TABLE `user_info` (
 DROP TABLE IF EXISTS `user_info_1`;
 CREATE TABLE `user_info_1` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `uid` varchar(255) NOT NULL,
-  `phone` int(11) DEFAULT NULL,
-  `addr` int(11) DEFAULT NULL,
-  `gender` tinyint(4) NOT NULL DEFAULT '0',
+  `user_id` varchar(255) NOT NULL,
+  `phone` bigint(11) DEFAULT NULL,
+  `addr` varchar(255) DEFAULT NULL,
+  `gender` int(4) NOT NULL DEFAULT '0',
   `ctime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `utime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Table structure for `user_info_2`
@@ -113,14 +113,14 @@ CREATE TABLE `user_info_1` (
 DROP TABLE IF EXISTS `user_info_2`;
 CREATE TABLE `user_info_2` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `uid` varchar(255) NOT NULL,
-  `phone` int(11) DEFAULT NULL,
-  `addr` int(11) DEFAULT NULL,
-  `gender` tinyint(4) NOT NULL DEFAULT '0',
+  `user_id` varchar(255) NOT NULL,
+  `phone` bigint(11) DEFAULT NULL,
+  `addr` varchar(255) DEFAULT NULL,
+  `gender` int(4) NOT NULL DEFAULT '0',
   `ctime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `utime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Table structure for `user_info_3`
@@ -128,13 +128,13 @@ CREATE TABLE `user_info_2` (
 DROP TABLE IF EXISTS `user_info_3`;
 CREATE TABLE `user_info_3` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `uid` varchar(255) NOT NULL,
-  `phone` int(11) DEFAULT NULL,
-  `addr` int(11) DEFAULT NULL,
-  `gender` tinyint(4) NOT NULL DEFAULT '0',
+  `user_id` varchar(255) NOT NULL,
+  `phone` bigint(11) DEFAULT NULL,
+  `addr` varchar(255) DEFAULT NULL,
+  `gender` int(4) NOT NULL DEFAULT '0',
   `ctime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `utime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 SET FOREIGN_KEY_CHECKS = 1;

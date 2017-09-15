@@ -5,6 +5,6 @@ import java.util.UUID;
 public class GeneralKeyTool {
 
 	public static String getId() {
-		return UUID.randomUUID().toString().replace("-", "")+System.currentTimeMillis();
+		return UUID.randomUUID().toString().replace("-", "");
 	}
 }
