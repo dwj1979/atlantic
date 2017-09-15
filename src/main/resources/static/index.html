@@ -11,8 +11,19 @@
 	<div><label>说明:&nbsp;&nbsp;&nbsp;</label><input style="width:250px;" type="text" id="comment"></input></div>
 	<div><label>电话:&nbsp;&nbsp;&nbsp;</label><input style="width:250px;" type="text" id="phone"></input></div>
 	<div><label>地址:&nbsp;&nbsp;&nbsp;</label><input style="width:250px;" type="text" id="addr"></input></div>
-	<div><label>性别:&nbsp;&nbsp;&nbsp;</label><input style="width:250px;" type="text" id="gender"></input></div>
-	<div><button style="margin-top:10px;height:30px;background:white;" id="reg">注册一次</button><button style="margin-left:3px;background:white;height:30px;" id="regts">注册十次</button></div>
+	<div>
+		<label>性别:&nbsp;&nbsp;</label>
+		<select id="gender" style="height:25px;width:250px;">
+			<option value ="1">男</option>
+			<option value ="0">女</option>
+			<option value ="2">中性</option>
+		</select>
+	</div>
+	<div><button style="margin-top:10px;height:30px;background:white;" id="reg">注册一次</button>
+	<button style="margin-left:3px;background:white;height:30px;" id="regts">注册十次</button></div>
+
+
 </body>
+<script src="/js/jquery-3.1.1.min.js"></script>
 <script src="/js/index.js"></script>
 </html>
