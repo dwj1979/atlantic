@@ -1,6 +1,7 @@
 package com.zhu.controller;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.zhu.dao.UserInfoMapper;
 import com.zhu.dao.UserMapper;
 import com.zhu.po.User;
+import com.zhu.po.UserExample;
 import com.zhu.po.UserInfo;
 import com.zhu.tool.GeneralKeyTool;
 
@@ -57,8 +59,15 @@ public class UserController {
 		}
 	}
 
-	@RequestMapping("/finduser/{username}")
-	public User find(@PathVariable String username) {
+	@RequestMapping("/user/find")
+	public List<Map<String, Object>> find(@RequestBody Map<String, Object> param) {
+		try {
+			List<Map<String, Object>> res = userMapper.findUserByNameAndPhone(param);
+			System.out.println(res);
+			return res;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 }

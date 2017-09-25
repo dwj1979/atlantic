@@ -5,9 +5,42 @@ $(function(){
 	$("#regts").bind("click",function(){
 		regist(10);		
 	})	
+	$("#find").bind("click",function(){
+		find();		
+	})	
 })
 
 var ipp = 'http://127.0.0.1:9876';
+
+function find(){
+	var param = {};
+	param.uname = $("#funame").val();
+	param.phone = $("#fphone").val();
+	var url = ipp+"/user/find";
+	var res = post(url,param);
+	reload(res);
+}
+
+function reload(data){
+	var html='';
+	for (var i = 0; i < data.length; i++) {
+		var d = data[i];
+		html+=
+			'<tr>'+
+			'<td>'+d.user_id+'</td>'+
+			'<td>'+d.user_name+'</td>'+
+			'<td>'+d.phone+'</td>'+
+			'<td>'+choseNV(d.gender)+'</td>'+
+			'<td>'+d.addr+'</td>'+
+			'<td>'+d.comment+'</td>'+
+			'</tr>';
+	}
+	$("#data").html(html);	
+}
+function choseNV(data){
+	if(data==0) return '女';
+	return '男';
+}
 
 function regist(n){
 	var param = {};

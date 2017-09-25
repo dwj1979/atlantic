@@ -19,9 +19,26 @@
 			<option value ="2">中性</option>
 		</select>
 	</div>
-	<div><button style="margin-top:10px;height:30px;background:white;" id="reg">注册一次</button>
-	<button style="margin-left:3px;background:white;height:30px;" id="regts">注册十次</button></div>
+	<div><button style="width:80px;margin-top:10px;height:30px;background:white;" id="reg">注册一次</button>
+	<button style="width:80px;margin-left:3px;background:white;height:30px;" id="regts">注册十次</button></div>
 
+	<div style="margin-top:30px;"><label>查询</label></div>
+	<div><label>用户名(模糊):</label><input type="text" style="width:220px;" id="funame"></input></div>
+	<div><label>手机号(准确):</label><input type="text" style="width:220px;" id="funame"></input></div>
+	<div><button style="width:80px;margin-top:10px;height:30px;background:white;" id="find">查询</button></div>
+	
+	<table border="1" style="border-collapse:collapse;width:600px;margin-top:10px;">
+		<tr>
+			<td>用户号</td>
+			<td>用户名</td>
+			<td>电话</td>
+			<td>性别</td>
+			<td>地址</td>
+			<td>说明</td>
+		</tr>
+		<tbody id="data">
+		</tbody>
+	</table>
 
 </body>
 <script src="/js/jquery-3.1.1.min.js"></script>
