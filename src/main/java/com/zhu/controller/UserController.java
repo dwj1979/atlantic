@@ -4,8 +4,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,6 +27,18 @@ import com.zhu.tool.GeneralKeyTool;
 @CrossOrigin(origins = "*")
 @RestController
 public class UserController {
+
+	static final Logger logger = LoggerFactory.getLogger(UserController.class);
+
+	@PostConstruct
+	public void testLog(){
+		new Thread(()->{
+			logger.debug("d---------------------------------------------------");
+			logger.info("i---------------------------------------------------");
+			logger.error("e---------------------------------------------------");
+			logger.warn("w---------------------------------------------------");
+		}).start();
+	}
 
 	@Resource
 	UserMapper userMapper;
